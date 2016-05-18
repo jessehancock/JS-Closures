@@ -104,12 +104,14 @@ counter = counterFactory(10);
     var welcomeText = 'You\'re doing awesome, keep it up ';
 
     // code message function here.
-		function
+		function message(){ 
+			return welcomeText + firstname + ' ' + lastname +'.';
+		}
 
 
     //Uncommment this to return the value of your invoked message function
 
-    return message()
+    return message();
   }
 
   motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
@@ -135,13 +137,13 @@ counter = counterFactory(10);
     // Anything that is being returned is made public and can be invoked from outside our lexical scope
 
     return {
-      // Code here.
+      publicMethod: privateMethod
     };
 
   })();
 
 //Uncomment this after you create your public method
-//   module.publicMethod();
+   module.publicMethod();
 
 
 
@@ -152,13 +154,13 @@ counter = counterFactory(10);
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
+    setTimeout(newScope(i), i * 1000);
   }
 
-  function newScope(i) {
-    console.log(i)
+  function newScope(num) {
+   return function(){
+    console.log(num);
+   }
   }
 }
 timeOutCounter();
@@ -172,8 +174,10 @@ timeOutCounter();
 
 var funcArray = [];
 
-/*
-  Make the following code work
+
+
+
+ // Make the following code work
 
   funcArray[0]() //0
   funcArray[1]() //1
@@ -182,5 +186,4 @@ var funcArray = [];
   funcArray[4]() //4
   funcArray[5]() //5
 
-  *Hint: Don't let this fool you. Break down what's really happening here.
-*/
+  //*Hint: Don't let this fool you. Break down what's really happening here.
