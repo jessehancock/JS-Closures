@@ -173,17 +173,31 @@ timeOutCounter();
 //////////////////PROBLEM 8////////////////////
 
 var funcArray = [];
+function closer(){
+	var t = -1;
+	return function(){
+				return ++t;
+		
+	}
+}
+
+var last = closer();
+
+for(var i = 0; i < 6 ; i++){
+	funcArray.push(last);
+	}
+
 
 
 
 
  // Make the following code work
-
-  funcArray[0]() //0
-  funcArray[1]() //1
-  funcArray[2]() //2
-  funcArray[3]() //3
-  funcArray[4]() //4
-  funcArray[5]() //5
+//
+//  funcArray[0]() //0
+//  funcArray[1]() //1
+//  funcArray[2]() //2
+//  funcArray[3]() //3
+//  funcArray[4]() //4
+//  funcArray[5]() //5
 
   //*Hint: Don't let this fool you. Break down what's really happening here.
